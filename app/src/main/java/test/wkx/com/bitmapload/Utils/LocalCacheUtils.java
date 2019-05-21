@@ -10,7 +10,7 @@ import java.io.FileOutputStream;
 
 public class LocalCacheUtils
 {
-    private static final String CACHE_PATH= Environment.getExternalStorageDirectory().getAbsolutePath()+"/WerbNews";
+    private static final String CACHE_PATH = Environment.getExternalStorageDirectory().getAbsolutePath()+"/WerbNews";
 
     /**
      * 从本地读取图片
