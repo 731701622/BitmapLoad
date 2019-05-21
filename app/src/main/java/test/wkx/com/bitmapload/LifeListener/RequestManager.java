@@ -31,22 +31,16 @@ public class RequestManager implements LifeCycleListener
 
     @Override
     public void onStart() {
-        //do you buzz
         Log.i(TAG, "onStart: ");
     }
 
-    /**
-     * 当出现该函数时，可以暂停Glide网络图片的请求
-     */
     @Override
     public void onStop() {
-        //do you buzz
         Log.i(TAG, "onStop: ");
     }
 
     @Override
     public void onDestroy() {
-        //do you buzz
         Log.i(TAG, "onDestroy: ");
     }
 

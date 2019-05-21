@@ -12,7 +12,6 @@ public class ActivityFragmentLifeCycle
 
     void onStart() {
         lifecycleListener.onStart();
-
     }
 
     void onStop() {
