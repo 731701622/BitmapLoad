@@ -2,15 +2,26 @@ package test.wkx.com.bitmapload.Utils;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.nfc.Tag;
 import android.os.AsyncTask;
+import android.os.Environment;
+import android.util.Log;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
+
+import test.wkx.com.bitmapload.MainActivity;
 
 public class NetCacheUtils
 {
+    private static final String TAG = "MainActivity";
     private LocalCacheUtils mLocalCacheUtils;
     private MemoryCacheUtils mMemoryCacheUtils;
 
@@ -97,12 +108,20 @@ public class NetCacheUtils
                 Bitmap bitmap = BitmapFactory.decodeStream(conn.getInputStream(),null,options);
                 return bitmap;
             }
-        } catch (IOException e) {
+        } catch (MalformedURLException e) {
+            Log.d(TAG, "协议未找到 ");
             e.printStackTrace();
+        } catch (IOException e) {
+            Log.d(TAG, "网址有误 ");
+            e.printStackTrace();
+
         } finally {
             conn.disconnect();
         }
 
         return null;
     }
-        }
+
+}
+
+

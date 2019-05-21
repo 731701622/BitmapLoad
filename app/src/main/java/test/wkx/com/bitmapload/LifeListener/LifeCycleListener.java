@@ -1,4 +1,4 @@
-package test.wkx.com.bitmapload;
+package test.wkx.com.bitmapload.LifeListener;
 
 public interface LifeCycleListener
 {

@@ -1,4 +1,4 @@
-package test.wkx.com.bitmapload;
+package test.wkx.com.bitmapload.LifeListener;
 
 import android.annotation.SuppressLint;
 import android.app.Fragment;

@@ -10,7 +10,7 @@ import java.io.FileOutputStream;
 
 public class LocalCacheUtils
 {
-    private static final String CACHE_PATH = Environment.getExternalStorageDirectory().getAbsolutePath()+"/WerbNews";
+    private static final String CACHE_PATH = Environment.getExternalStorageDirectory().getAbsolutePath()+"/Image/";
 
     /**
      * 从本地读取图片
@@ -21,14 +21,11 @@ public class LocalCacheUtils
         try {
             fileName = url;
             File file=new File(CACHE_PATH,fileName);
-
             Bitmap bitmap = BitmapFactory.decodeStream(new FileInputStream(file));
-
             return bitmap;
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return null;
     }
 
