@@ -1,11 +1,13 @@
 package test.wkx.com.bitmapload;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 
 
 import java.io.File;
@@ -85,8 +87,6 @@ public class ImageAdapter extends BaseAdapter
 
     LayoutInflater layoutInflater;
     Context context;
-    File fileDir;
-
     public ImageAdapter(Context context) {
         this.context = context;
         layoutInflater = (LayoutInflater) context
@@ -111,14 +111,22 @@ public class ImageAdapter extends BaseAdapter
     @Override
     public View getView(int position, View convertView, ViewGroup parent)
     {
-
-        View view = layoutInflater.inflate(R.layout.item_list, null);
-        ImageView imageView = (ImageView) view.findViewById(R.id.iv);
-        bitmapUtils.disPlay(imageView, urls[position]);
-        return view;
+        ViewHolder holder = null;
+        if(convertView == null){
+            holder = new ViewHolder();
+            convertView = layoutInflater.inflate(R.layout.item_list, null);
+            holder.imageView = (ImageView) convertView.findViewById(R.id.iv);
+            convertView.setTag(holder);
+        }else{
+            holder = (ViewHolder) convertView.getTag();
+        }
+        bitmapUtils.disPlay(holder.imageView, urls[position]);
+        return convertView;
     }
 
-
+    class ViewHolder{
+        ImageView imageView;
+    }
 }
 
 
