@@ -15,7 +15,7 @@ public class MyBitmapUtils
 
     public MyBitmapUtils(){
         mMemoryCacheUtils=new MemoryCacheUtils();
-        mLocalCacheUtils=new LocalCacheUtils();
+        mLocalCacheUtils=new LocalCacheUtils(mMemoryCacheUtils);
         mNetCacheUtils=new NetCacheUtils(mLocalCacheUtils,mMemoryCacheUtils);
     }
 

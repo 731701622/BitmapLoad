@@ -1,5 +1,6 @@
 package test.wkx.com.bitmapload.Utils;
 
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.nfc.Tag;
@@ -51,11 +52,12 @@ public class NetCacheUtils
          * @param params
          * @return
          */
+        @SuppressLint("WrongThread")
         @Override
         protected Bitmap doInBackground(Object[] params) {
             ivPic = (ImageView) params[0];
             url = (String) params[1];
-
+            ivPic.setTag(url);  //与url 绑定一起
             return downLoadBitmap(url);
         }
 
@@ -74,6 +76,8 @@ public class NetCacheUtils
          */
         @Override
         protected void onPostExecute(Bitmap result) {
+            String url  = (String) ivPic.getTag();
+            if (this.url .equals(url)) {
             if (result != null) {
                 ivPic.setImageBitmap(result);
                 System.out.println("从网络缓存图片.");
@@ -81,7 +85,7 @@ public class NetCacheUtils
                 mLocalCacheUtils.setBitmapToLocal(url, result);
                 //保存至内存中
                 mMemoryCacheUtils.setBitmapToMemory(url, result);
-
+            }
             }
         }
     }
